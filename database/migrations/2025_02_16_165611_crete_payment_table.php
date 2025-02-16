@@ -11,18 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Payment', function (Blueprint $table) {
+        Schema::create('payment', function (Blueprint $table) {
             $table->id();
             $table->string('customer');
-            $table->string('billingType');
+            $table->string('billing_type');
             $table->float('value');
-            $table->date('dueDate');
+            $table->date('due_date');
             $table->string('description')->nullable();
-            $table->integer('daysAfterDueDateToRegistrationCancellation')->nullable();
-            $table->string('externalReference')->nullable();
-            $table->integer('installmentCount')->nullable();
-            $table->float('totalValue')->nullable();
-            $table->boolean('postalService')->nullable();
+            $table->integer('days_after_due_date_to_registration_cancellation')->nullable();
+            $table->string('external_reference')->nullable();
+            $table->integer('installment_count')->nullable();
+            $table->float('total_value')->nullable();
+            $table->boolean('postal_service')->nullable();
             $table->json('discount')->nullable();
             $table->json('interest')->nullable();
             $table->json('fine')->nullable();
@@ -36,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('Payment');
+        Schema::dropIfExists('payment');
     }
 };

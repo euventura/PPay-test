@@ -2,12 +2,13 @@
 
 namespace App\Http\Integrations\Asaas\Requests;
 
+use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Traits\Body\HasJsonBody;
 
 
-class NewPayment extends Request
+class NewPayment extends Request implements HasBody
 {
     use HasJsonBody;
     

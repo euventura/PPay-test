@@ -9,19 +9,19 @@ class Payment extends Model
 {
     use HasFactory;
 
-    protected $table = 'Payment';
+    protected $table = 'payment';
 
     protected $fillable = [
         'customer',
-        'billingType',
+        'billing_type',
         'value',
-        'dueDate',
+        'due_date',
         'description',
-        'daysAfterDueDateToRegistrationCancellation',
-        'externalReference',
-        'installmentCount',
-        'totalValue',
-        'postalService',
+        'days_after_due_date_to_registration_cancellation',
+        'external_reference',
+        'installment_count',
+        'total_value',
+        'postal_service',
         'discount',
         'interest',
         'fine',

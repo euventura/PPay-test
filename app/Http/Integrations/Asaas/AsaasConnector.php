@@ -14,7 +14,7 @@ class AsaasConnector extends Connector
      */
     public function resolveBaseUrl(): string
     {
-        return env('ASAAS_URL', '	https://api-sandbox.asaas.com/');
+        return env('ASAAS_URL', 'https://api-sandbox.asaas.com/');
     }
 
     /**
