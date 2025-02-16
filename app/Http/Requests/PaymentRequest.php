@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use LVR\CreditCard\CardNumber;
@@ -26,7 +25,7 @@ class PaymentRequest extends FormRequest
     {
         return [
             'customer' => 'required|string',
-            'billing_type' =>  Rule::in(['BOLETO', 'PIX', 'CREDIT_CARD']),
+            'billing_type' => Rule::in(['BOLETO', 'PIX', 'CREDIT_CARD']),
             'value' => 'required|numeric',
             'due_date' => 'required|date',
             'description' => 'nullable|string',
@@ -35,12 +34,12 @@ class PaymentRequest extends FormRequest
             'installment_count' => 'nullable|integer',
             'total_value' => 'nullable|numeric',
             'postal_service' => 'nullable|boolean',
-            'discount' => 'nullable|array:value,due_date_limit_days,type', 
+            'discount' => 'nullable|array:value,due_date_limit_days,type',
             'interest' => 'nullable|array:value',
             'fine' => 'nullable|array:value,type',
             'split' => 'nullable|array:wallet_id',
             'credit_card' => 'required_if:billing_type,CREDIT_CARD|array:holderName,number,expiryMonth,expiryYear,ccv',
-            'credit_card.number' => ['nullable','required_if:billing_type,CREDIT_CARD', new CardNumber]
+            'credit_card.number' => ['nullable', 'required_if:billing_type,CREDIT_CARD', new CardNumber],
         ];
     }
 

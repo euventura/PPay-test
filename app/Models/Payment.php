@@ -25,13 +25,13 @@ class Payment extends Model
         'discount',
         'interest',
         'fine',
-        'split'
+        'split',
     ];
 
     protected $casts = [
         'discount' => 'array',
         'interest' => 'array',
         'fine' => 'array',
-        'split' => 'array'
+        'split' => 'array',
     ];
 }

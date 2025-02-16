@@ -8,13 +8,11 @@ use App\Http\Integrations\Asaas\Requests\NewPayment;
 use App\Http\Integrations\Asaas\Requests\PaymentPix;
 use App\Http\Requests\PaymentRequest;
 use App\Models\Payment;
-use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
-    public function __construct(protected Payment $payment, protected AsaasConnector $asaas)
-    {}
-    
+    public function __construct(protected Payment $payment, protected AsaasConnector $asaas) {}
+
     public function makePayment(PaymentRequest $request)
     {
         $paymentRequest = new NewPayment(
@@ -38,22 +36,24 @@ class PaymentController extends Controller
 
         $paymentResponse = json_decode($response->body(), true);
 
-        if (isset($paymentResponse['errors']) && !empty($paymentResponse['errors'])) {
+        if (isset($paymentResponse['errors']) && ! empty($paymentResponse['errors'])) {
             throw new AsaasApiException($paymentResponse);
         }
 
         if ($paymentResponse['billingType'] == 'PIX') {
             return $this->retrivePix($paymentResponse);
         }
+
         return view('sucesso', compact('paymentResponse'));
 
     }
 
     protected function retrivePix($paymentResponse)
     {
-        
-       $pixResponse = $this->asaas->send(new PaymentPix($paymentResponse['id']));
-       $pixResponseJson = json_decode($pixResponse->body(), true);
-       return view('pix', compact('pixResponseJson'));
+
+        $pixResponse = $this->asaas->send(new PaymentPix($paymentResponse['id']));
+        $pixResponseJson = json_decode($pixResponse->body(), true);
+
+        return view('pix', compact('pixResponseJson'));
     }
 }

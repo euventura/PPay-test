@@ -11,4 +11,4 @@ Route::get('/payment', function () {
     return view('payment');
 });
 
-Route::post('/payment',  [PaymentController::class, 'makePayment'])->name('payment.store');
+Route::post('/payment', [PaymentController::class, 'makePayment'])->name('payment.store');

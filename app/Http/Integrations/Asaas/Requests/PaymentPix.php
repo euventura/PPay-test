@@ -12,11 +12,9 @@ class PaymentPix extends Request
      */
     protected Method $method = Method::GET;
 
-
     public function __construct(
         protected string $payentId
-        )
-    {}
+    ) {}
 
     /**
      * The endpoint for the request
