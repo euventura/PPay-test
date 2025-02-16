@@ -29,6 +29,7 @@ class NewPayment extends Request
         protected string $billingType,
         protected float $value,
         protected string $dueDate,
+        protected ? array $creditCard,
         protected ? string $description,
         protected ? int $daysAfterDueDateToRegistrationCancellation,
         protected ? string $externalReference,
@@ -76,6 +77,30 @@ class NewPayment extends Request
             'value' => $value,
             'dueDateLimitDays' => $dueDateLimitDays,
             'type' => $type
+        ];
+
+        return $this;
+    }
+
+    /**
+     * set creditCard to request
+     * @param float $value
+     * @return NewPayment
+     */
+    public function setCreditCard(
+        string $holderName, 
+        string $number, 
+        string $expiryMonth, 
+        string $expiryYear, 
+        string $ccv
+        ): self {
+
+            $this->creditCard = [
+                "holderName" => $holderName,
+                "number"=> $number,
+                "expiryMonth" => $expiryMonth,
+                "expiryYear" => $expiryYear,
+                "ccv" => $ccv
         ];
 
         return $this;
