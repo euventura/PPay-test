@@ -40,4 +40,5 @@ jobs:
         files: coverage.xml
         flags: unittests
         name: codecov-umbrella
+        token: ${{ secrets.CODCOV_TOKEN }}
         fail_ci_if_error: true
