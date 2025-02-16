@@ -27,6 +27,8 @@ return new class extends Migration
             $table->json('interest')->nullable();
             $table->json('fine')->nullable();
             $table->json('split')->nullable();
+            $table->json('server_response')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

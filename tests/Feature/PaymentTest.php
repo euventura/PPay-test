@@ -5,9 +5,12 @@ namespace Tests\Feature;
 use Saloon\Http\Faking\MockClient;
 use Saloon\Http\Faking\MockResponse;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
 
 class PaymentTest extends TestCase
 {
+    use RefreshDatabase;
     /**
      * A basic feature test example.
      */
