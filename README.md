@@ -1,5 +1,7 @@
-
 # Perfect Pay
+
+![Tests](https://github.com/seu-usuario/perfect-pay/actions/workflows/laravel.yml/badge.svg)
+[![codecov](https://codecov.io/gh/seu-usuario/perfect-pay/branch/main/graph/badge.svg)](https://codecov.io/gh/seu-usuario/perfect-pay)
 
 ## Descrição
 
@@ -70,5 +72,5 @@ O Perfect Pay é uma aplicação para gerenciar pagamentos utilizando diferentes
     http://localhost
     ```
 
-3. Preencha o formulário de pagamento e envie para processar o pagamento.
+8. Preencha o formulário de pagamento e envie para processar o pagamento.
 
