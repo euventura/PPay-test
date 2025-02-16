@@ -41,4 +41,5 @@ jobs:
         flags: unittests
         name: codecov-umbrella
         token: ${{ secrets.CODCOV_TOKEN }}
+        slug: euventura/PPay-test
         fail_ci_if_error: true
