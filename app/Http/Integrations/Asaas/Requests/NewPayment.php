@@ -2,15 +2,15 @@
 
 namespace App\Http\Integrations\Asaas\Requests;
 
+use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Traits\Body\HasJsonBody;
 
-
-class NewPayment extends Request
+class NewPayment extends Request implements HasBody
 {
     use HasJsonBody;
-    
+
     /**
      * The HTTP method of the request
      */
@@ -29,19 +29,19 @@ class NewPayment extends Request
         protected string $billingType,
         protected float $value,
         protected string $dueDate,
-        protected ? array $creditCard,
-        protected ? string $description,
-        protected ? int $daysAfterDueDateToRegistrationCancellation,
-        protected ? string $externalReference,
-        protected ? int $installmentCount,
-        protected ? float $totalValue,
-        protected ? bool $postalService,
-        protected ? array $discount,
-        protected ? array $interest,
-        protected ? array $fine,
-        protected ? array $split
-    ){}
-    
+        protected ?array $creditCard,
+        protected ?string $description,
+        protected ?int $daysAfterDueDateToRegistrationCancellation,
+        protected ?string $externalReference,
+        protected ?int $installmentCount,
+        protected ?float $totalValue,
+        protected ?bool $postalService,
+        protected ?array $discount,
+        protected ?array $interest,
+        protected ?array $fine,
+        protected ?array $split
+    ) {}
+
     protected function defaultBody(): array
     {
         return [
@@ -58,17 +58,12 @@ class NewPayment extends Request
             'discount' => $this->discount,
             'interest' => $this->interest,
             'fine' => $this->fine,
-            'split' => $this->split
+            'split' => $this->split,
         ];
     }
 
     /**
      * Set Discount to request
-     *
-     * @param integer $value
-     * @param integer $dueDateLimitDays
-     * @param string $type
-     * @return self
      */
     public function setDiscount(int $value, int $dueDateLimitDays, string $type): self
     {
@@ -76,7 +71,7 @@ class NewPayment extends Request
         $this->discount = [
             'value' => $value,
             'dueDateLimitDays' => $dueDateLimitDays,
-            'type' => $type
+            'type' => $type,
         ];
 
         return $this;
@@ -84,23 +79,23 @@ class NewPayment extends Request
 
     /**
      * set creditCard to request
-     * @param float $value
-     * @return NewPayment
+     *
+     * @param  float  $value
      */
     public function setCreditCard(
-        string $holderName, 
-        string $number, 
-        string $expiryMonth, 
-        string $expiryYear, 
+        string $holderName,
+        string $number,
+        string $expiryMonth,
+        string $expiryYear,
         string $ccv
-        ): self {
+    ): self {
 
-            $this->creditCard = [
-                "holderName" => $holderName,
-                "number"=> $number,
-                "expiryMonth" => $expiryMonth,
-                "expiryYear" => $expiryYear,
-                "ccv" => $ccv
+        $this->creditCard = [
+            'holderName' => $holderName,
+            'number' => $number,
+            'expiryMonth' => $expiryMonth,
+            'expiryYear' => $expiryYear,
+            'ccv' => $ccv,
         ];
 
         return $this;
@@ -108,12 +103,11 @@ class NewPayment extends Request
 
     /**
      * set interest to request
-     * @param float $value
-     * @return NewPayment
      */
-    public function setInterest(float $value): self {
+    public function setInterest(float $value): self
+    {
         $this->interest = [
-            'value' => $value
+            'value' => $value,
         ];
 
         return $this;
@@ -121,14 +115,12 @@ class NewPayment extends Request
 
     /**
      * Set Fine to Request
-     * @param float $value
-     * @param string $type
-     * @return NewPayment
      */
-    public function setFine(float $value, string $type): self {
+    public function setFine(float $value, string $type): self
+    {
         $this->fine = [
             'value' => $value,
-            'type' => $type
+            'type' => $type,
         ];
 
         return $this;
@@ -136,32 +128,31 @@ class NewPayment extends Request
 
     /**
      * add new Split to request
-     * @param string $walletId
-     * @param mixed $fixedValue
-     * @param mixed $percentualValue
-     * @param mixed $totalFixedValue
-     * @param mixed $externalReference
-     * @param mixed $description
+     *
+     * @param  mixed  $fixedValue
+     * @param  mixed  $percentualValue
+     * @param  mixed  $totalFixedValue
+     * @param  mixed  $externalReference
+     * @param  mixed  $description
      * @return void
      */
     public function addSplit(
-        string $walletId, 
-        ?int $fixedValue, 
-        ?int $percentualValue, 
-        ?int $totalFixedValue, 
-        ?string $externalReference, 
+        string $walletId,
+        ?int $fixedValue,
+        ?int $percentualValue,
+        ?int $totalFixedValue,
+        ?string $externalReference,
         ?string $description
-    ): self
-    {
+    ): self {
         $this->split[] = [
             'walletId' => $walletId,
             'fixedValue' => $fixedValue,
             'percentualValue' => $percentualValue,
             'totalFixedValue' => $totalFixedValue,
             'externalReference' => $externalReference,
-            'description' => $description
+            'description' => $description,
         ];
+
         return $this;
     }
-    
 }
