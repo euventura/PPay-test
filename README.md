@@ -27,13 +27,13 @@ O Perfect Pay é uma aplicação para gerenciar pagamentos utilizando diferentes
 1. Clone o repositório:
 
     ```bash
-    git clone https://github.com/seu-usuario/perfect-pay.git
+    git clone git@github.com:euventura/PPay-test.git
     ```
 
 2. Navegue até o diretório do projeto:
 
     ```bash
-    cd perfect-pay
+    cd PPay-test
     ```
 
 3. Instale as dependências do Composer:
