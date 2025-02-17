@@ -67,7 +67,7 @@ class PaymentTest extends TestCase
 
         $response = $this->post('/payment', [
             'customer' => '6519801',
-            'billing_type' => 'BOLETO',
+            'billing_type' => 'PIX',
             'value' => 2222.0,
             'due_date' => '2025-02-21',
             'description' => 'teste']);
