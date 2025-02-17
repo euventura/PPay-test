@@ -1,7 +1,7 @@
 # Perfect Pay
 
 [![Laravel](https://github.com/euventura/PPay-test/actions/workflows/laravel.yml/badge.svg?branch=master)](https://github.com/euventura/PPay-test/actions/workflows/laravel.yml)
-[![codecov](https://codecov.io/gh/seu-usuario/perfect-pay/branch/main/graph/badge.svg)](https://codecov.io/gh/seu-usuario/perfect-pay)
+[![codecov](https://codecov.io/gh/euventura/PPay-test/graph/badge.svg?token=X0ZRYGQN6T)](https://codecov.io/gh/euventura/PPay-test)
 
 ## Descrição
 
